@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            Bootstrap 101 Template
+             Assets Swapper Options
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-16"><!-- Bootstrap -->
@@ -19,12 +19,17 @@
                     </h1>
                 </div>
                 <p class="lead">
-                    Enter an asset url you want to swap
+                    Every HTTP request from any page that matches Original Asset URL is going to be redirected to New Asset URL. </p>
+                <p>
+                    Enter an asset url you want to swap:<br />
+                <small>e.g. http://www.example.com/script.min.js and http://www.example.com/script.not-minified.js</small>
                 </p>
+               
                 <form class="form-inline">
-                    <input type="text" class="input-large span5" placeholder="Asset URL"> 
-                    <input type="password" class="input-large span5" placeholder="New asset URL"> 
-                   <a type="submit" class="btn btn-primary "><i class="icon-plus-sign icon-white"></i> Add</a>
+                    <input type="text" class="input-large span5" placeholder="Original Asset URL"> 
+                    <i class="icon-plus-sign icon-white">-></i>
+                    <input type="password" class="input-large span5" placeholder="New Asset URL"> 
+                    <a class="btn btn-primary "><i class="icon-plus-sign icon-white"></i> Add</a>
                 </form>
                 <table class="table table-condensed">
                   <thead>
@@ -32,13 +37,37 @@
                       <th>Original URL</th>
                       <th>New URL</th>
                       <th>Status</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>...</td>
-                      <td>...</td>
-                      <td><input type="checkbox" value=""></td>
+                      <td>http://portal.aolcdn.com/p5/_v75.10/css/maing.css</td>
+                      <td>http://portal.aolcdn.com/p5/_v75.10/css/maing.orig.css</td>
+                      <td><span class="label label-success"><input type="checkbox" checked="checked"> Active</span></td>
+                      <td><a class="btn btn-danger "><i class="icon-remove-sign icon-white"></i> Remove</a></td>
+                    </tr>
+
+
+                                        <tr>
+                      <td>http://portal.aolcdn.com/p5/_v75.10/css/maing.css</td>
+                      <td>http://portal.aolcdn.com/p5/_v75.10/css/maing.orig.css</td>
+                      <td><span class="label label-success"><input type="checkbox" checked="checked"> Active</span></td>
+                      <td><a class="btn btn-danger "><i class="icon-remove-sign icon-white"></i> Remove</a></td>
+                    </tr>
+
+                                        <tr>
+                      <td>http://portal.aolcdn.com/p5/_v75.10/css/maing.css</td>
+                      <td>http://portal.aolcdn.com/p5/_v75.10/css/maing.orig.css</td>
+                      <td><span class="label label-success"><input type="checkbox" checked="checked"> Active</span></td>
+                      <td><a class="btn btn-danger "><i class="icon-remove-sign icon-white"></i> Remove</a></td>
+                    </tr>
+
+                                        <tr>
+                      <td>http://portal.aolcdn.com/p5/_v75.10/css/maing.css</td>
+                      <td>http://portal.aolcdn.com/p5/_v75.10/css/maing.orig.css</td>
+                      <td><span class="label label-success"><input type="checkbox" checked="checked"> Active</span></td>
+                      <td><a class="btn btn-danger "><i class="icon-remove-sign icon-white"></i> Remove</a></td>
                     </tr>
                   </tbody>
                 </table>
