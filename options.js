@@ -38,10 +38,12 @@ var addRow = function(source, target, status) {
 		var newRow = $("<tr>").append($("<td>").append($("<a>", {
 			"href": source,
 			"text": source,
-			"class": "source"
+			"class": "source",
+			"target":"_new"
 		}))).append($("<td>").append($("<a>", {
 			"href": target,
-			"text": target
+			"text": target,
+			"target":"_new"
 		}))).append($("<td>").append($("<label>", {
 			"class": "checkbox"
 		}).append($("<span>", {

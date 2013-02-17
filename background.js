@@ -19,14 +19,14 @@ if (currVersion != prevVersion) {
 
 
 // source:destination
-var mapping = JSON.parse(localStorage.configuration);
+mapping = JSON.parse(localStorage.configuration);
 
 chrome.webRequest.onBeforeRequest.addListener(
 
 function(details) {
 	for (var source in mapping) {
 		var redirectTo = mapping[source];
-		if (redirectTo.status && details.url === source.url) {
+		if (redirectTo.status && details.url === source) {
 			console.log("MATCH found for " + source + ". Replacing url with " + redirectTo.url);
 			return {
 				redirectUrl: redirectTo.url
