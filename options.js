@@ -20,23 +20,35 @@ table.on("click", ".removeEntry", function() {
 	$(this).parent().parent().hide(500).remove();
 });
 
+table.on("click", ".changeStatus", function() {
+	var src = $(this).parent().parent().find("a.source").attr("href");
+	delete configuration[src];
+	localStorage.configuration = JSON.stringify(configuration);
+	$(this).parent().parent().hide(500).remove();
+});
+
 var fnAddEntry = function() {
 		configuration[source.val()] = target.val();
 		localStorage.configuration = JSON.stringify(configuration);
-		addRow(source.val(),target.val());
+		addRow(source.val(), target.val());
 	};
 
-var addRow = function(source,target){
-	var newRow = $("<tr>").append($("<td>").append($("<a>", {
+var addRow = function(source, target, status) {
+		var newRow = $("<tr>").append($("<td>").append($("<a>", {
 			"href": source,
 			"text": source,
 			"class": "source"
 		}))).append($("<td>").append($("<a>", {
 			"href": target,
 			"text": target
-		}))).append($("<td>", {
-			text: "status"
-		})).append($("<td>").append($("<a>", {
+		}))).append($("<td>").append($("<label>", {
+			"class": "checkbox"
+		}).append($("<span>", {
+			"class": "label " + (status ? "label-success":"label-important"),
+			"text": status ? "Active" : "Disabled"
+		})).append($("<input>", {
+			type: "checkbox"
+		})))).append($("<td>").append($("<a>", {
 			"class": "btn btn-danger removeEntry"
 		}).append(
 		$("<i>", {
@@ -44,7 +56,7 @@ var addRow = function(source,target){
 		})).append(" Remove")));
 
 		table.find("tbody ").append(newRow);
-};
+	};
 
 var load = function() {
 		for (var source in configuration) {
