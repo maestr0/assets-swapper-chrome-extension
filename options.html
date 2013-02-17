@@ -1,34 +1,58 @@
 <!DOCTYPE html>
-<html >
-  <head>
-    <title>Bootstrap 101 Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-16">
-    <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="custom.css" rel="stylesheet" media="screen">
-  </head>
-  <body>
-    <div id="wrap">
-
-      <!-- Begin page content -->
-      <div class="container">
-        <div class="page-header">
-          <h1>Assets Swapper Options</h1>
+<html>
+    <head>
+        <title>
+            Bootstrap 101 Template
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-16"><!-- Bootstrap -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" type="text/css">
+        <link href="custom.css" rel="stylesheet" media="screen" type="text/css">
+    </head>
+    <body>
+        <div id="wrap">
+            <!-- Begin page content -->
+            <div class="container">
+                <div class="page-header">
+                    <h1>
+                        Assets Swapper Options
+                    </h1>
+                </div>
+                <p class="lead">
+                    Enter an asset url you want to swap
+                </p>
+                <form class="form-inline">
+                    <input type="text" class="input-large span5" placeholder="Asset URL"> 
+                    <input type="password" class="input-large span5" placeholder="New asset URL"> 
+                   <a type="submit" class="btn btn-primary "><i class="icon-plus-sign icon-white"></i> Add</a>
+                </form>
+                <table class="table table-condensed">
+                  <thead>
+                    <tr>
+                      <th>Original URL</th>
+                      <th>New URL</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>...</td>
+                      <td>...</td>
+                      <td><input type="checkbox" value=""></td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            <div id="push"></div>
         </div>
-        <p class="lead">Enter an asset url you want to swap</p>
-        
-        </p>
-      </div>
-
-      <div id="push"></div>
-    </div>
-    <div id="footer">
-      <div class="container">
-        <p class="muted credit">Created by <a href="https://plus.google.com/u/0/100616398601172723862/posts">Paweł Raszewski</a> 2013.</p>
-      </div>
-    </div>  
-    <script src="jquery-1.7.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-  </body>
+        <div id="footer">
+            <div class="container">
+                <p class="muted credit">
+                    Created by <a href="https://plus.google.com/u/0/100616398601172723862/posts">Paweł Raszewski</a> 2013.
+                </p>
+            </div>
+        </div>
+        <script src="jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    </body>
 </html>
