@@ -21,16 +21,17 @@ table.on("click", ".removeEntry", function() {
 });
 
 table.on("click", ".changeStatus", function() {
-	var src = $(this).parent().parent().find("a.source").attr("href");
-	delete configuration[src];
-	localStorage.configuration = JSON.stringify(configuration);
-	$(this).parent().parent().hide(500).remove();
+	$(this).parent().find("span").text($(this).is(":checked")? "Active" : "Disabled").toggleClass("label-success","label-warning");
+
 });
 
 var fnAddEntry = function() {
-		configuration[source.val()] = target.val();
+		configuration[source.val()] = {
+			url: target.val(),
+			status: true
+		};
 		localStorage.configuration = JSON.stringify(configuration);
-		addRow(source.val(), target.val());
+		addRow(source.val(), target.val(), true);
 	};
 
 var addRow = function(source, target, status) {
@@ -44,17 +45,18 @@ var addRow = function(source, target, status) {
 		}))).append($("<td>").append($("<label>", {
 			"class": "checkbox"
 		}).append($("<span>", {
-			"class": "label " + (status ? "label-success":"label-important"),
+			"class": "label " + (status ? "label-success" : "label-important"),
 			"text": status ? "Active" : "Disabled"
 		})).append($("<input>", {
-			type: "checkbox"
+			type: "checkbox",
+			"class": "changeStatus"
 		})))).append($("<td>").append($("<a>", {
 			"class": "btn btn-danger removeEntry"
 		}).append(
 		$("<i>", {
 			"class": "icon-remove-sign icon-white"
 		})).append(" Remove")));
-
+		newRow.find("input[type=checkbox]").prop('checked', status);
 		table.find("tbody ").append(newRow);
 	};
 
