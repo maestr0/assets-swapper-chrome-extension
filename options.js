@@ -23,14 +23,17 @@ table.on("click", ".removeEntry", function() {
 var fnAddEntry = function() {
 		configuration[source.val()] = target.val();
 		localStorage.configuration = JSON.stringify(configuration);
+		addRow(source.val(),target.val());
+	};
 
-		var newRow = $("<tr>").append($("<td>").append($("<a>", {
-			"href": source.val(),
-			"text": source.val(),
+var addRow = function(source,target){
+	var newRow = $("<tr>").append($("<td>").append($("<a>", {
+			"href": source,
+			"text": source,
 			"class": "source"
 		}))).append($("<td>").append($("<a>", {
-			"href": target.val(),
-			"text": target.val()
+			"href": target,
+			"text": target
 		}))).append($("<td>", {
 			text: "status"
 		})).append($("<td>").append($("<a>", {
@@ -41,8 +44,12 @@ var fnAddEntry = function() {
 		})).append(" Remove")));
 
 		table.find("tbody ").append(newRow);
-	};
+};
 
 var load = function() {
+		for (var source in configuration) {
+			addRow(source, configuration[source]);
+		}
+	};
 
-	}
+load();
