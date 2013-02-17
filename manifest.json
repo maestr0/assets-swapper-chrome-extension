@@ -11,5 +11,6 @@
         "128": "assets_swapper_icon_128.png",
         "48": "assets_swapper_icon_48.png",
         "16": "assets_swapper_icon_16.png"
-    }
+    },
+    "options_page": "options.html"
 }

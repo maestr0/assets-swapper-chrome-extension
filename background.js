@@ -4,23 +4,49 @@
  * Licence GPL3
  */
 
+// Check if the version has changed.
+var currVersion = getVersion();
+var prevVersion = localStorage['version'];
+if (currVersion != prevVersion) {
+	// Check if we just installed this extension.
+	if (typeof prevVersion == 'undefined') {
+		onInstall();
+	} else {
+		//onUpdate(prevVersion);
+	}
+	localStorage['version'] = currVersion;
+}
+
+
 // source:destination
-var mapping = {
-	"http://portal.aolcdn.com/p5/_v75.10/css/maing.css": "http://portal.aolcdn.com/p5/_v75.10/css/maing.orig.css"
-};
+var mapping = JSON.parse(localStorage.configuration);
 
 chrome.webRequest.onBeforeRequest.addListener(
 
 function(details) {
 	for (var source in mapping) {
 		var redirectTo = mapping[source];
-		if (details.url === source) {
-			console.log("MATCH found for " + source + ". Replacing url with " + redirectTo);
+		if (redirectTo.status && details.url === source.url) {
+			console.log("MATCH found for " + source + ". Replacing url with " + redirectTo.url);
 			return {
-				redirectUrl: redirectTo
+				redirectUrl: redirectTo.url
 			};
 		}
 	}
 }, {
 	urls: ["<all_urls>"]
 }, ["blocking"]);
+
+
+
+function onInstall() {
+	// on install
+	if (typeof localStorage.configuration === "undefined") {
+		localStorage.configuration = "{}";
+	}
+}
+
+function getVersion() {
+	var details = chrome.app.getDetails();
+	return details.version;
+}

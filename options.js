@@ -1,10 +1,7 @@
 var source = $("#source");
 var target = $("#target");
 var table = $("table");
-// on install
-if (typeof localStorage.configuration === "undefined") {
-	localStorage.configuration = "{}";
-}
+
 var configuration = JSON.parse(localStorage.configuration);
 
 $("#add_asset").click(function() {
