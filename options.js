@@ -21,7 +21,7 @@ table.on("click", ".removeEntry", function() {
 });
 
 table.on("click", ".changeStatus", function() {
-	$(this).parent().find("span").text($(this).is(":checked")? "Active" : "Disabled").toggleClass("label-success","label-warning");
+	$(this).parent().find("span").text($(this).is(":checked")? "Active" : "Disabled").toggleClass("label-success label-important");
 
 });
 
@@ -60,10 +60,10 @@ var addRow = function(source, target, status) {
 		table.find("tbody ").append(newRow);
 	};
 
-var load = function() {
+var init = function() {
 		for (var source in configuration) {
-			addRow(source, configuration[source]);
+			addRow(source, configuration[source].url, configuration[source].status);
 		}
 	};
 
-load();
+init();
