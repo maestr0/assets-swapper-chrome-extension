@@ -3,7 +3,7 @@ var target = $("#target");
 var table = $("table");
 // on install
 if (typeof localStorage.configuration === "undefined") {
-	localStorage.configuration = "";
+	localStorage.configuration = "{}";
 }
 var configuration = JSON.parse(localStorage.configuration);
 
@@ -21,8 +21,11 @@ table.on("click", ".removeEntry", function() {
 });
 
 table.on("click", ".changeStatus", function() {
-	$(this).parent().find("span").text($(this).is(":checked")? "Active" : "Disabled").toggleClass("label-success label-important");
-
+	var status = $(this).is(":checked");
+	$(this).parent().find("span").text(status ? "Active" : "Disabled").toggleClass("label-success label-important");
+	var src = $(this).parent().parent().parent().find("a.source").attr("href");
+	configuration[src].status = status;
+	localStorage.configuration = JSON.stringify(configuration);
 });
 
 var fnAddEntry = function() {
@@ -51,7 +54,7 @@ var addRow = function(source, target, status) {
 			type: "checkbox",
 			"class": "changeStatus"
 		})))).append($("<td>").append($("<a>", {
-			"class": "btn btn-danger removeEntry"
+			"class": "btn btn-danger btn-mini removeEntry"
 		}).append(
 		$("<i>", {
 			"class": "icon-remove-sign icon-white"
