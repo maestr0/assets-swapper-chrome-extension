@@ -26,10 +26,9 @@
                 </p>
                
                 <form class="form-inline">
-                    <input type="text" class="input-large span5" placeholder="Original Asset URL"> 
-                    <i class="icon-plus-sign icon-white">-></i>
-                    <input type="password" class="input-large span5" placeholder="New Asset URL"> 
-                    <a class="btn btn-primary "><i class="icon-plus-sign icon-white"></i> Add</a>
+                    <input id="source" type="text" class="input-large span5" placeholder="Original Asset URL"> 
+                    <input id="target" type="text" class="input-large span5" placeholder="New Asset URL"> 
+                    <a id="add_asset" class="btn btn-primary "><i class="icon-plus-sign icon-white"></i> Add</a>
                 </form>
                 <table class="table table-condensed">
                   <thead>
@@ -44,8 +43,8 @@
                     <tr>
                       <td>http://portal.aolcdn.com/p5/_v75.10/css/maing.css</td>
                       <td>http://portal.aolcdn.com/p5/_v75.10/css/maing.orig.css</td>
-                      <td><span class="label label-success"><input type="checkbox" checked="checked"> Active</span></td>
-                      <td><a class="btn btn-danger "><i class="icon-remove-sign icon-white"></i> Remove</a></td>
+                      <td><span class="label label-success changeStatus"><input type="checkbox" checked="checked"> Active</span></td>
+                      <td><a class="btn btn-danger removeEntry"><i class="icon-remove-sign icon-white"></i> Remove</a></td>
                     </tr>
 
 
@@ -83,5 +82,6 @@
         </div>
         <script src="jquery-1.7.1.min.js" type="text/javascript"></script>
         <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="options.js" type="text/javascript"></script>
     </body>
 </html>
