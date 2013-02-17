@@ -24,6 +24,12 @@ chrome.webRequest.onBeforeRequest.addListener(function(details) {
 		var redirectTo = mapping[source];
 		if (redirectTo.status && details.url === source) {
 			console.log("MATCH found for " + source + ". Replacing url with " + redirectTo.url);
+			var icon = 'assets_swapper_icon_48.png';
+			chrome.pageAction.setIcon({
+				path: icon,
+				tabId: details.tabId
+			});
+			chrome.pageAction.show(details.tabId);
 			return {
 				redirectUrl: redirectTo.url
 			};
@@ -33,7 +39,9 @@ chrome.webRequest.onBeforeRequest.addListener(function(details) {
 	urls: ["<all_urls>"]
 }, ["blocking"]);
 
-
+chrome.pageAction.onClicked.addListener(function(tab) {
+	chrome.tabs.create({url: 'options.html'});
+});
 
 function onInstall() {
 	// on install
