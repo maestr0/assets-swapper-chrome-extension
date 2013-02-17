@@ -1,6 +1,11 @@
 var source = $("#source");
 var target = $("#target");
 var table = $("table");
+// on install
+if (typeof localStorage.configuration === "undefined") {
+	localStorage.configuration = "";
+}
+var configuration = JSON.parse(localStorage.configuration);
 
 $("#add_asset").click(function() {
 	fnAddEntry();
@@ -10,12 +15,15 @@ $("#add_asset").click(function() {
 
 table.on("click", ".removeEntry", function() {
 	var src = $(this).parent().parent().find("a.source").attr("href");
-	delete localStorage[src];
+	delete configuration[src];
+	localStorage.configuration = JSON.stringify(configuration);
 	$(this).parent().parent().hide(500).remove();
 });
 
 var fnAddEntry = function() {
-		localStorage[source.val()] = target.val();
+		configuration[source.val()] = target.val();
+		localStorage.configuration = JSON.stringify(configuration);
+
 		var newRow = $("<tr>").append($("<td>").append($("<a>", {
 			"href": source.val(),
 			"text": source.val(),
@@ -30,13 +38,11 @@ var fnAddEntry = function() {
 		}).append(
 		$("<i>", {
 			"class": "icon-remove-sign icon-white"
-		})).append(" Remove"))
-
-		);
+		})).append(" Remove")));
 
 		table.find("tbody ").append(newRow);
 	};
 
-var removeEntry = function() {
+var load = function() {
 
-	};
+	}
