@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Assets Swapper",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "description": "Extension allows to swap asset files on any website. Useful when there is a need to debug a website with an unminified version of javascript.",
     "background": {
         "scripts": ["background.js"]

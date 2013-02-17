@@ -17,13 +17,9 @@ if (currVersion != prevVersion) {
 	localStorage['version'] = currVersion;
 }
 
-
-// source:destination
-mapping = JSON.parse(localStorage.configuration);
-
-chrome.webRequest.onBeforeRequest.addListener(
-
-function(details) {
+chrome.webRequest.onBeforeRequest.addListener(function(details) {
+	// source:destination
+	var mapping = JSON.parse(localStorage.configuration);
 	for (var source in mapping) {
 		var redirectTo = mapping[source];
 		if (redirectTo.status && details.url === source) {
