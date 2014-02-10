@@ -22,17 +22,22 @@ chrome.webRequest.onBeforeRequest.addListener(function(details) {
 	var mapping = JSON.parse(localStorage.configuration);
 	for (var source in mapping) {
 		var redirectTo = mapping[source];
-		if (redirectTo.status && details.url === source) {
-			console.log("MATCH found for " + source + ". Replacing url with " + redirectTo.url);
-			var icon = 'assets_swapper_icon_48.png';
+		if (redirectTo.status && details.url.indexOf(source) === 0) {
+			console.log("MATCH found for " + source + ". Replacing url with " + redirectTo.url);			
 			chrome.pageAction.setIcon({
-				path: icon,
+				path: 'assets_swapper_icon_48.png',
 				tabId: details.tabId
 			});
 			chrome.pageAction.show(details.tabId);
 			return {
 				redirectUrl: redirectTo.url
 			};
+		} else if(details.url.indexOf(redirectTo.url)===0){
+			chrome.pageAction.setIcon({
+				path: 'assets_swapper_icon_48.png',
+				tabId: details.tabId
+			});
+			chrome.pageAction.show(details.tabId);
 		}
 	}
 }, {
