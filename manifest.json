@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Custom Redirects",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Extension allows to redirect any http request to any destination. Useful for debugging or blocking certain scripts.",
     "background": {
         "scripts": ["background.js"]
