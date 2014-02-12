@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "Assets Swapper",
-    "version": "0.2.0",
-    "description": "Extension allows to swap asset files on any website. Useful when there is a need to debug a website with an unminified version of javascript.",
+    "name": "Custom Redirects",
+    "version": "1.0.0",
+    "description": "Extension allows to redirect any http request to any destination. Useful for debugging or blocking certain scripts.",
     "background": {
         "scripts": ["background.js"]
     },
